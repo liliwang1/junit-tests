@@ -11,17 +11,25 @@ public class Cohort {
 
     public double getCohortAverage() {
         double avg = 0;
-        for (Student student: this.getStudents()) {
+        for (Student student : this.getStudents()) {
             avg += student.getGradeAverage();
         }
         return avg / this.getStudents().size();
     }
 
-    public void addStudent(Student student){
+    public void addStudent(Student student) {
         students.add(student);
     }
 
     public List<Student> getStudents() {
         return students;
+    }
+
+    public Student findStudentById(long l) {
+        for (Student s : students) {
+            if (s.getId() == l)
+                return s;
+        }
+        return null;
     }
 }

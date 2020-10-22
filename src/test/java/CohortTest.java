@@ -43,8 +43,17 @@ public class CohortTest {
         b.addGrade(70);
         cohort.addStudent(a);
         cohort.addStudent(b);
-        assertEquals(85, cohort.getCohortAverage());
+        assertEquals(85, cohort.getCohortAverage(), 0);
         a.addGrade(88);
         assertEquals(84.6, cohort.getCohortAverage(), 0.1);
+    }
+
+    @Test
+    public void testFindStudentById() {
+        cohort.addStudent(a);
+        assertEquals(a, cohort.findStudentById(1L));
+        cohort.addStudent(b);
+        assertEquals(b, cohort.findStudentById(2L));
+        assertNull(cohort.findStudentById(3L));
     }
 }
