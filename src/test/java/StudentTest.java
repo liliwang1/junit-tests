@@ -12,22 +12,24 @@ public class StudentTest {
 
     @BeforeAll
     public static void setUp() {
-        a = new Student("lucy", 1);
+        a = new Student("lucy", 1L);
         list = new ArrayList<>();
     }
 
     @Test
     public void testStudentConstructor() {
+        Student b = null;
+        assertNull(b);
         assertNotNull(a);
         assertEquals("lucy", a.name);
-        assertEquals(1, a.id);
+        assertEquals(1L, a.id);
 //        assertSame(new ArrayList<>(), a.grades);
 //        assertEquals(new ArrayList<>(), a.grades);
     }
 
     @Test
     public void testGetIdMethod() {
-        assertEquals(1, a.getID());
+        assertEquals(1L, a.getID());
     }
 
     @Test
@@ -37,9 +39,8 @@ public class StudentTest {
 
     @Test
     public void testAddGradeMethod() {
-        list.add(60);
         a.addGrade(60);
-        assertEquals(list, a.grades);
+        assertEquals(60, a.getGrades().get(0));
     }
 
     @Test
@@ -51,11 +52,20 @@ public class StudentTest {
     public void testGetGradeAverage() {
         a.addGrade(80);
         a.addGrade(100);
-        list.add(80);
-        list.add(100);
-        assertEquals(list,a.getGrades());
-        assertEquals(list.size(),a.getGrades().size());
-        assertEquals(80.0, a.getGradeAverage());
+        assertEquals(80.0, a.getGradeAverage(), 0);
+        a.addGrade(99);
+        assertEquals(84.75, a.getGradeAverage(), 0.1);
     }
+//
+//    @Test
+//    public void testUpdateGrade() {
+//
+//    }
 
+//    @Test
+//    public void testDeleteGrade() {
+//        System.out.println(a.getGrades());
+//        a.deleteGrade(80);
+//        assertEquals(list, a.getGrades());
+//    }
 }

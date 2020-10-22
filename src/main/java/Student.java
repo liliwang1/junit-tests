@@ -33,4 +33,12 @@ public class Student {
             sum += grade;
         return (double) sum / grades.size();
     }
+
+    public void updateGrade(int i, Integer grade) {
+        grades.set(i, grade);
+    }
+
+    public void deleteGrade(Integer i) {
+        grades.remove(i);
+    }
 }
